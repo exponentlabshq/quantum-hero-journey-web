@@ -236,22 +236,33 @@ function renderStageLabels() {
         const isLowest = index === lowestIndex;
         
         // Position: above dot (default), below dot (if lowest)
-        // Reduced by 50% from 45 to 22.5
-        const labelY = isLowest ? y + 22.5 : y - 22.5;
+        // 2x spacing: 22.5 * 2 = 45
+        const labelY = isLowest ? y + 45 : y - 45;
         
-        // Font size: 50% larger for highest dot
-        const fontSize = isHighest ? '0.75rem' : '0.5rem';
+        // Font size: 100% bigger (2x) - 0.5rem -> 1rem, 0.75rem -> 1.5rem
+        const fontSize = isHighest ? '1.5rem' : '1rem';
+        
+        // Adjust x position for first dot to prevent left-side cutoff
+        // Move right by 30% of paddingX (which represents the left margin)
+        let labelX = x;
+        let textAnchor = 'middle';
+        if (index === 0) {
+            // Move right by 30% of the horizontal padding
+            const offset = CONFIG.paddingX * 0.3;
+            labelX = x + offset;
+            textAnchor = 'start'; // Change anchor to start for better positioning
+        }
         
         // Create text element (no background bubble)
         const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-        text.setAttribute('x', x);
+        text.setAttribute('x', labelX);
         text.setAttribute('y', labelY);
         text.setAttribute('class', 'stage-label');
         if (index === currentStageIndex) text.classList.add('active');
         text.setAttribute('fill', index === currentStageIndex ? '#ffd700' : phase.color);
         text.setAttribute('font-size', fontSize);
         text.setAttribute('font-weight', index === currentStageIndex ? '600' : '500');
-        text.setAttribute('text-anchor', 'middle');
+        text.setAttribute('text-anchor', textAnchor);
         text.setAttribute('dominant-baseline', 'middle');
         text.textContent = labelText;
         
@@ -392,6 +403,303 @@ function loadPhase(phaseIndex) {
 }
 
 // ============================================================================
+// NAME HIGHLIGHTING
+// ============================================================================
+
+function highlightNames(text, phaseColor) {
+    // List of historical figures and scientists to highlight
+    // Compound names first (longest first) to match them before shorter variants
+    const names = [
+        // Pre-Classical Phase
+        'Thales of Miletus', 'Anaximander', 'Heraclitus', 'Pythagoras', 'Philolaus', 'Archytas', 
+        'Hippasus', 'Plato', 'Euclid', 'Parmenides', 'Hypatia of Alexandria', 'Hypatia',
+        'Archimedes', 'Eratosthenes', 'Justinian', 'Ibn al-Haytham', 'Ptolemy', 'Galen',
+        'Al-Biruni', 'Al-Kindi', 'Roger Bacon', 'Francis Bacon', 'Witelo', 'John Peckham',
+        'Ibn Sina', 'Avicenna', 'Hippocrates', 'Al-Farabi', 'Al-Razi', 'Hunayn ibn Ishaq',
+        'Thomas Aquinas', 'Albertus Magnus', 'Cardinal Bellarmine', 'Paolo Sarpi',
+        'Pope Urban VIII', 'Johannes Kepler', 'Tycho Brahe', 'Brahe', 'Longomontanus',
+        'Nicolaus Copernicus', 'Copernicus', 'Georg Joachim Rheticus', 'Rheticus',
+        'Johannes Petreius', 'Petreius', 'Martin Luther', 'Luther',
+        
+        // Classical Phase
+        'Isaac Newton', 'Newton', 'Gottfried Leibniz', 'Leibniz', 'Robert Hooke', 'Hooke',
+        'Edmond Halley', 'Halley', 'James Clerk Maxwell', 'Maxwell', 'Michael Faraday', 'Faraday',
+        'André-Marie Ampère', 'Ampère', 'Hans Christian Ørsted', 'Ørsted',
+        'Carl Friedrich Gauss', 'Gauss', 'Wilhelm Weber', 'Weber', 'Augustin-Jean Fresnel', 'Fresnel',
+        'Thomas Young', 'Young', 'Heinrich Hertz', 'Hertz', 'Max Planck', 'Planck',
+        'Wilhelm Wien', 'Wien', 'Lord Rayleigh', 'Rayleigh', 'Ludwig Boltzmann', 'Boltzmann',
+        'Heinrich Rubens', 'Rubens', 'Ferdinand Kurlbaum', 'Kurlbaum',
+        'Albert Einstein', 'Einstein', 'Philipp Lenard', 'Lenard', 'Arthur Compton', 'Compton',
+        'Niels Bohr', 'Bohr', 'J.J. Thomson', 'Thomson', 'Ernest Rutherford', 'Rutherford',
+        'Joseph von Fraunhofer', 'Fraunhofer', 'Johannes Rydberg', 'Rydberg',
+        'James Franck', 'Franck', 'Gustav Hertz', 'Arnold Sommerfeld', 'Sommerfeld',
+        'Louis de Broglie', 'De Broglie', 'Henri Poincaré', 'Poincaré',
+        'Clinton Davisson', 'Davisson', 'Lester Germer', 'Germer',
+        'Werner Heisenberg', 'Heisenberg', 'Erwin Schrödinger', 'Schrödinger',
+        'Max Born', 'Born', 'Pascual Jordan', 'Jordan', 'Paul Dirac', 'Dirac',
+        'Dmitri Mendeleev', 'Mendeleev', 'Linus Pauling', 'Pauling',
+        'Robert Mulliken', 'Mulliken', 'Eugene Wigner', 'Wigner',
+        
+        // Quantum Phase
+        'David Hilbert', 'Hilbert', 'Georg Cantor', 'Cantor', 'Bernhard Riemann', 'Riemann',
+        'John von Neumann', 'Von Neumann', 'Hermann Weyl', 'Weyl',
+        'Boris Podolsky', 'Podolsky', 'Nathan Rosen', 'Rosen', 'EPR',
+        'David Bohm', 'Bohm', 'John Bell', 'Bell', 'Rudolf Peierls', 'Peierls',
+        'Alain Aspect', 'Aspect', 'John Clauser', 'Clauser', 'Anton Zeilinger', 'Zeilinger',
+        'Artur Ekert', 'Ekert', 'Peter Shor', 'Shor', 'Satyendra Nath Bose', 'Bose',
+        'Eric Cornell', 'Cornell', 'Carl Wieman', 'Wieman', 'Wolfgang Ketterle', 'Ketterle',
+        'Steven Chu', 'Chu', 'Claude Cohen-Tannoudji', 'Cohen-Tannoudji',
+        'William Phillips', 'Phillips', 'David Wineland', 'Wineland',
+        'Rainer Blatt', 'Blatt', 'Mikhail Lukin', 'Lukin', 'Markus Greiner', 'Greiner',
+        'Immanuel Bloch', 'Bloch', 'John Preskill', 'Preskill', 'Lov Grover', 'Grover',
+        'Wojciech Zurek', 'Zurek', 'Juan Ignacio Cirac', 'Cirac',
+        'Andrew Steane', 'Steane', 'Barbara Terhal', 'Terhal',
+        'William Wootters', 'Wootters', 'Daniel Gottesman', 'Gottesman',
+        'Michael Nielsen', 'Nielsen', 'Isaac Chuang', 'Chuang',
+        'Jay Gambetta', 'Gambetta', 'Chris Monroe', 'Monroe', 'Chad Rigetti', 'Rigetti',
+        'John Martinis', 'Martinis', 'Hartmut Neven', 'Neven',
+        'Maria Schuld', 'Schuld', 'Nathan Wiebe', 'Wiebe',
+        'Jian-Wei Pan', 'Pan', 'Nicolas Gisin', 'Gisin',
+        'Richard Feynman', 'Feynman', 'David Deutsch', 'Deutsch',
+        'Theodor Hänsch', 'Hänsch', 'Isidor Rabi', 'Rabi', 'Norman Ramsey', 'Ramsey',
+        'Arthur Ashkin', 'Ashkin', 'Charles Townes', 'Townes',
+        'Theodore Maiman', 'Maiman', 'John Bardeen', 'Bardeen',
+        'Walter Brattain', 'Brattain', 'William Shockley', 'Shockley',
+        'Carl Anderson', 'Anderson', 'Henry Rowland', 'Rowland'
+    ];
+    
+    // Sort by length (longest first) to match compound names first
+    names.sort((a, b) => b.length - a.length);
+    
+    let highlightedText = text;
+    
+    // Highlight each name (longest first to avoid partial matches)
+    names.forEach(name => {
+        // Escape special regex characters
+        const escapedName = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        // Use word boundaries for matching, but exclude matches inside HTML tags
+        const regex = new RegExp(`\\b${escapedName}\\b`, 'gi');
+        
+        let match;
+        const matches = [];
+        
+        // Find all matches with their positions
+        while ((match = regex.exec(highlightedText)) !== null) {
+            matches.push({
+                text: match[0],
+                index: match.index,
+                length: match[0].length
+            });
+        }
+        
+        // Process matches in reverse order to maintain correct indices
+        matches.reverse().forEach(m => {
+            const beforeMatch = highlightedText.substring(0, m.index);
+            const lastSpanOpen = beforeMatch.lastIndexOf('<span');
+            const lastSpanClose = beforeMatch.lastIndexOf('</span>');
+            
+            // If there's an open span tag after the last closing tag, we're inside a span
+            if (lastSpanOpen <= lastSpanClose) {
+                // Not inside a span, so highlight it
+                const before = highlightedText.substring(0, m.index);
+                const after = highlightedText.substring(m.index + m.length);
+                highlightedText = before + 
+                    `<span class="highlighted-name" style="color: ${phaseColor}; font-weight: 600; text-shadow: 0 0 8px ${phaseColor};">${m.text}</span>` + 
+                    after;
+            }
+        });
+    });
+    
+    return highlightedText;
+}
+
+// ============================================================================
+// SCIENTIFIC TERM HIGHLIGHTING
+// ============================================================================
+
+function highlightScientificTerms(text, phaseColor) {
+    // List of scientific terms to highlight
+    // Compound terms first (longest first) to match them before shorter variants
+    const terms = [
+        // Quantum mechanics
+        'quantum mechanics', 'quantum computing', 'quantum computer', 'quantum algorithm',
+        'quantum state', 'quantum superposition', 'quantum entanglement', 'quantum coherence',
+        'quantum decoherence', 'quantum error correction', 'quantum teleportation',
+        'quantum supremacy', 'quantum advantage', 'quantum information', 'quantum information theory',
+        'quantum gate', 'quantum circuit', 'quantum bit', 'qubit', 'qubits',
+        'wave-particle duality', 'uncertainty principle', 'Heisenberg uncertainty',
+        'Schrödinger equation', 'wave function', 'quantum jump', 'quantum leap',
+        'Bose-Einstein Condensate', 'Bose-Einstein Condensates', 'BEC',
+        'photoelectric effect', 'blackbody radiation', 'atomic spectra', 'atomic spectrum',
+        'energy level', 'energy levels', 'electron orbit', 'electron orbits',
+        'quantized', 'quantization', 'quantum', 'quantumly',
+        
+        // Physics concepts
+        'classical mechanics', 'classical physics', 'electromagnetic theory',
+        'electromagnetic wave', 'electromagnetic waves', 'universal gravitation',
+        'special relativity', 'general relativity', 'thermodynamics',
+        'optics', 'wave optics', 'geometric optics', 'particle physics',
+        'atomic physics', 'nuclear physics', 'statistical mechanics',
+        'field theory', 'unified field theory', 'string theory',
+        
+        // Mathematical concepts - expanded
+        'mathematical framework', 'mathematical description', 'mathematical physics',
+        'mathematical harmony', 'mathematical laws', 'mathematical precision',
+        'mathematical patterns', 'mathematical ratios', 'mathematical contortion',
+        'mathematical tool', 'mathematical thinking', 'mathematical discovery',
+        'differential equation', 'wave equation', 'Maxwell equations',
+        'Pythagorean theorem', 'calculus', 'geometry', 'geometric',
+        'algebra', 'algebraic', 'trigonometry', 'statistics', 'statistical',
+        'probability', 'probabilistic', 'arithmetic', 'numeric', 'numerical',
+        'deterministic', 'determinism', 'vector space', 'Hilbert space',
+        'operator', 'operators', 'observable', 'observables',
+        'mathematics', 'mathematical', 'number', 'numbers', 'ratio', 'ratios',
+        'equation', 'equations', 'formula', 'formulas', 'calculation', 'calculations',
+        'analytical geometry', 'algebraic notation',
+        
+        // Tools and instruments - expanded
+        'telescope', 'telescopes', 'microscope', 'microscopes',
+        'prism', 'prisms', 'laser', 'lasers', 'precision lasers',
+        'trap', 'traps', 'magneto-optical trap', 'magneto-optical traps',
+        'tweezer', 'tweezers', 'optical tweezers',
+        'instrument', 'instruments', 'tool', 'tools', 'device', 'devices',
+        'apparatus', 'equipment', 'machine', 'machines', 'mechanism', 'mechanisms',
+        'clockwork mechanism', 'laboratory', 'laboratories',
+        
+        // Shapes and geometric forms
+        'triangle', 'triangles', 'right triangle', 'right triangles',
+        'circle', 'circles', 'perfect circles', 'circular',
+        'ellipse', 'ellipses', 'square', 'squares',
+        'angle', 'angles', 'line', 'lines', 'point', 'points',
+        'shape', 'shapes', 'geometric', 'geometry',
+        
+        // Music and harmonics
+        'music', 'musical', 'harmony', 'harmonics', 'harmonic',
+        'interval', 'intervals', 'musical intervals', 'harmonious musical intervals',
+        'lyre', 'string', 'strings', 'note', 'notes',
+        'tone', 'tones', 'sound', 'sounds',
+        
+        // Experimental methods - expanded
+        'experimental method', 'scientific method', 'hypothesis', 'hypotheses',
+        'experiment', 'experiments', 'experimental', 'thought experiment', 'thought experiments',
+        'observation', 'observations', 'observe', 'observing', 'observed',
+        'systematic testing', 'peer review', 'reproducible', 'reproducibility',
+        'laser cooling', 'optical molasses', 'atomic molasses',
+        'Doppler cooling', 'Bose-Einstein',
+        'test', 'testing', 'tested', 'measure', 'measurement', 'measurements',
+        'data', 'evidence', 'proof', 'prove', 'proven', 'verify', 'verification',
+        'validate', 'validation', 'discover', 'discovered', 'discovery', 'discoveries',
+        'finding', 'findings', 'find', 'found',
+        
+        // Physical entities
+        'photon', 'photons', 'electron', 'electrons', 'atom', 'atoms', 'atomic',
+        'molecule', 'molecules', 'molecular', 'nucleus', 'nuclei',
+        'wave', 'waves', 'particle', 'particles', 'particulate',
+        'energy', 'frequency', 'frequencies', 'wavelength', 'wavelengths',
+        'momentum', 'position', 'velocity', 'acceleration', 'force', 'forces',
+        'mass', 'charge', 'spin', 'angular momentum',
+        'heat', 'temperature', 'temperatures', 'cold', 'cooling', 'cooled',
+        'freeze', 'freezing', 'absolute zero', 'kelvin', 'microkelvin',
+        'thermal', 'power', 'pressure', 'pressures',
+        
+        // Light and vision
+        'light', 'lights', 'illumination', 'illuminate',
+        'vision', 'visual', 'sight', 'see', 'seeing', 'seen',
+        'optics', 'optical', 'refraction', 'reflection', 'refract', 'reflect',
+        'lens', 'lenses', 'mirror', 'mirrors', 'beam', 'beams', 'ray', 'rays',
+        
+        // Scientific processes
+        'superposition', 'entanglement', 'entangled', 'coherence', 'decoherence',
+        'interference', 'diffraction', 'refraction', 'reflection',
+        'absorption', 'emission', 'radiation', 'spectrum', 'spectra',
+        'resonance', 'oscillation', 'vibration', 'harmonic',
+        
+        // Theory and methodology
+        'theory', 'theories', 'theoretical', 'law', 'laws',
+        'principle', 'principles', 'concept', 'concepts',
+        'idea', 'ideas', 'model', 'models', 'framework', 'frameworks',
+        'method', 'methods', 'methodology', 'methodologies',
+        'technique', 'techniques', 'process', 'processes',
+        'approach', 'approaches', 'systematic approach', 'systematic framework',
+        
+        // Discovery and innovation
+        'invention', 'inventions', 'invent', 'invented',
+        'breakthrough', 'breakthroughs', 'advance', 'advances',
+        'progress', 'development', 'developments',
+        'innovation', 'innovations',
+        
+        // Celestial and astronomical
+        'planet', 'planets', 'planetary', 'star', 'stars', 'stellar',
+        'cosmos', 'cosmic', 'universe', 'universal', 'galaxy', 'galaxies',
+        'solar', 'sun', 'earth', 'moon', 'moons',
+        'orbit', 'orbits', 'orbital', 'motion', 'motions',
+        'movement', 'movements', 'trajectory', 'trajectories',
+        
+        // Error correction and computation
+        'error correction', 'fault-tolerant', 'fault tolerance',
+        'no-cloning theorem', 'quantum error correction code',
+        'algorithm', 'algorithms', 'computation', 'computational',
+        'optimization', 'simulation', 'cryptography', 'cryptographic',
+        
+        // Measurement and observation
+        'measurement', 'measurements', 'observer', 'observation',
+        'collapse', 'wave function collapse', 'measurement problem',
+        'Bell test', 'Bell inequality', 'hidden variables',
+        
+        // States and properties
+        'ground state', 'excited state', 'quantum state',
+        'coherent', 'incoherent', 'classical', 'quantum',
+        'macroscopic', 'microscopic', 'atomic scale', 'quantum scale'
+    ];
+    
+    // Sort by length (longest first) to match compound terms first
+    terms.sort((a, b) => b.length - a.length);
+    
+    let highlightedText = text;
+    
+    // Highlight each term (longest first to avoid partial matches)
+    terms.forEach(term => {
+        // Escape special regex characters
+        const escapedTerm = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        // Use word boundaries for matching
+        const regex = new RegExp(`\\b${escapedTerm}\\b`, 'gi');
+        
+        let match;
+        const matches = [];
+        
+        // Find all matches with their positions
+        while ((match = regex.exec(highlightedText)) !== null) {
+            matches.push({
+                text: match[0],
+                index: match.index,
+                length: match[0].length
+            });
+        }
+        
+        // Process matches in reverse order to maintain correct indices
+        matches.reverse().forEach(m => {
+            const beforeMatch = highlightedText.substring(0, m.index);
+            const lastSpanOpen = beforeMatch.lastIndexOf('<span');
+            const lastSpanClose = beforeMatch.lastIndexOf('</span>');
+            
+            // If there's an open span tag after the last closing tag, we're inside a span
+            if (lastSpanOpen <= lastSpanClose) {
+                // Not inside a span, so highlight it
+                const before = highlightedText.substring(0, m.index);
+                const after = highlightedText.substring(m.index + m.length);
+                // Use a cyan/teal color for scientific terms (complementary to phase colors)
+                const scientificColor = '#00CED1'; // Dark turquoise/cyan
+                highlightedText = before + 
+                    `<span class="highlighted-term" style="color: ${scientificColor}; font-weight: 500; text-shadow: 0 0 6px ${scientificColor}; font-style: italic;">${m.text}</span>` + 
+                    after;
+            }
+        });
+    });
+    
+    return highlightedText;
+}
+
+// ============================================================================
 // MODAL
 // ============================================================================
 
@@ -423,9 +731,12 @@ function showModal() {
             const bullet = document.createElement('div');
             bullet.className = 'modal-bullet';
             const bulletText = detail.trim().substring(1).trim();
+            // Highlight names and scientific terms in bullet text
+            let highlightedBulletText = highlightNames(bulletText, phase.color);
+            highlightedBulletText = highlightScientificTerms(highlightedBulletText, phase.color);
             bullet.innerHTML = `
                 <span class="bullet-icon">•</span>
-                <span class="bullet-text">${bulletText}</span>
+                <span class="bullet-text">${highlightedBulletText}</span>
             `;
             elements.modalContent.appendChild(bullet);
         } else if (detail.trim().startsWith('  -')) {
@@ -433,16 +744,22 @@ function showModal() {
             const subBullet = document.createElement('div');
             subBullet.className = 'modal-bullet modal-bullet-sub';
             const subBulletText = detail.trim().substring(3).trim();
+            // Highlight names and scientific terms in sub-bullet text
+            let highlightedSubBulletText = highlightNames(subBulletText, phase.color);
+            highlightedSubBulletText = highlightScientificTerms(highlightedSubBulletText, phase.color);
             subBullet.innerHTML = `
                 <span class="bullet-icon">◦</span>
-                <span class="bullet-text">${subBulletText}</span>
+                <span class="bullet-text">${highlightedSubBulletText}</span>
             `;
             elements.modalContent.appendChild(subBullet);
         } else {
-            // Regular paragraph
+            // Regular paragraph - highlight names and scientific terms
             const p = document.createElement('p');
             p.className = 'modal-paragraph';
-            p.textContent = detail.trim();
+            // First highlight names, then highlight scientific terms
+            let highlightedText = highlightNames(detail.trim(), phase.color);
+            highlightedText = highlightScientificTerms(highlightedText, phase.color);
+            p.innerHTML = highlightedText;
             elements.modalContent.appendChild(p);
         }
     });
