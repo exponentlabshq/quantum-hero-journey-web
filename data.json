@@ -1,0 +1,648 @@
+{
+  "title": "The Hero's Journey of Quantum Computing",
+  "subtitle": "From Ancient Mathematics to Quantum Entanglement",
+  "brand": "Blockface.btc",
+  "phases": [
+    {
+      "id": 0,
+      "name": "Pre-Classical Phase",
+      "era": "Ancient to Renaissance (500 BCE - 1600 CE)",
+      "color": "#FFD700",
+      "stages": [
+        {
+          "id": 0,
+          "title": "1. Ordinary World - Mystical understanding of nature",
+          "details": [
+            "Before scientific method, humans explained nature through:",
+            "• Mythology and religious beliefs",
+            "• Philosophical speculation",
+            "• Observation without systematic testing",
+            "",
+            "The world was seen as:",
+            "• Governed by divine will",
+            "• Unpredictable and mysterious",
+            "• Beyond human comprehension",
+            "",
+            "This mystical worldview would be challenged by mathematical thinking."
+          ]
+        },
+        {
+          "id": 1,
+          "title": "2. Call to Adventure - Pythagoras discovers mathematical harmony",
+          "details": [
+            "Pythagoras (570-495 BCE) made revolutionary discoveries:",
+            "• Pythagorean theorem: a² + b² = c²",
+            "• Mathematical relationships in music (harmonics)",
+            "• Numbers as the foundation of reality",
+            "",
+            "Key insight:",
+            "• Nature follows mathematical patterns",
+            "• These patterns can be discovered and understood",
+            "",
+            "This was the first step toward scientific thinking."
+          ]
+        },
+        {
+          "id": 2,
+          "title": "3. Refusal of the Call - Resistance to mathematical abstraction",
+          "details": [
+            "Many resisted the mathematical approach:",
+            "• Traditional beliefs were deeply entrenched",
+            "• Mathematical thinking seemed abstract and disconnected",
+            "• Religious authorities saw it as a threat",
+            "",
+            "Challenges included:",
+            "• Persecution of mathematicians",
+            "• Loss of traditional worldviews",
+            "• Fear of the unknown",
+            "",
+            "Progress was slow but inevitable."
+          ]
+        },
+        {
+          "id": 3,
+          "title": "4. Meeting the Mentor - Ibn al-Haytham's optics & scientific method",
+          "details": [
+            "Ibn al-Haytham (965-1040 CE) revolutionized science:",
+            "• Developed experimental method",
+            "• Book of Optics: foundation of modern optics",
+            "• Rejected authority, embraced observation",
+            "",
+            "Key contributions:",
+            "• Systematic experimentation",
+            "• Mathematical description of light",
+            "• Scientific method principles",
+            "",
+            "He showed that truth comes from observation, not authority."
+          ]
+        },
+        {
+          "id": 4,
+          "title": "5. Crossing the Threshold - Ibn Sina's systematic observation",
+          "details": [
+            "Ibn Sina (Avicenna, 980-1037 CE) advanced the method:",
+            "• Canon of Medicine: systematic medical knowledge",
+            "• Logical approach to natural phenomena",
+            "• Integration of observation and reasoning",
+            "",
+            "Breakthrough:",
+            "• Systematic classification of knowledge",
+            "• Evidence-based conclusions",
+            "• Foundation for modern science",
+            "",
+            "The threshold to scientific thinking was crossed."
+          ]
+        },
+        {
+          "id": 5,
+          "title": "6. Tests, Allies, Enemies - Galileo challenges Aristotle",
+          "details": [
+            "Galileo Galilei (1564-1642) faced major challenges:",
+            "• Challenged 2000-year-old Aristotelian physics",
+            "• Used telescope to observe moons of Jupiter",
+            "• Demonstrated objects fall at same rate",
+            "",
+            "The conflict:",
+            "• Church vs. Science",
+            "• Authority vs. Observation",
+            "• Tradition vs. Truth",
+            "",
+            "Galileo's allies: mathematics and observation.",
+            "His enemies: entrenched authority and dogma."
+          ]
+        },
+        {
+          "id": 6,
+          "title": "7. Approach to Inmost Cave - Kepler's planetary laws",
+          "details": [
+            "Johannes Kepler (1571-1630) discovered planetary laws:",
+            "• Planets move in ellipses, not circles",
+            "• Equal areas in equal times",
+            "• Mathematical relationship: T² ∝ r³",
+            "",
+            "The deep truth:",
+            "• Nature follows precise mathematical laws",
+            "• These laws can be discovered through observation",
+            "• Mathematics describes reality perfectly",
+            "",
+            "This was the approach to understanding the universe."
+          ]
+        },
+        {
+          "id": 7,
+          "title": "8. Ordeal - Copernican revolution & heliocentrism",
+          "details": [
+            "Nicolaus Copernicus (1473-1543) proposed heliocentrism:",
+            "• Earth orbits the Sun, not vice versa",
+            "• Challenged 1500 years of geocentric belief",
+            "• Required complete worldview shift",
+            "",
+            "The ordeal:",
+            "• Religious persecution",
+            "• Social rejection",
+            "• Personal doubt and fear",
+            "",
+            "But the evidence was overwhelming.",
+            "The old worldview had to die for the new to be born."
+          ]
+        },
+        {
+          "id": 8,
+          "title": "9. Reward - Mathematical description of motion",
+          "details": [
+            "The reward was a new understanding:",
+            "• Motion follows mathematical laws",
+            "• These laws are universal",
+            "• Predictable and testable",
+            "",
+            "Key achievements:",
+            "• Galileo's laws of motion",
+            "• Kepler's planetary laws",
+            "• Mathematical physics foundation",
+            "",
+            "Scientists could now predict and understand nature mathematically."
+          ]
+        },
+        {
+          "id": 9,
+          "title": "10. The Road Back - Experimental method established",
+          "details": [
+            "The scientific method became standard:",
+            "• Observation → Hypothesis → Experiment → Theory",
+            "• Reproducible results",
+            "• Peer review and verification",
+            "",
+            "The return journey:",
+            "• Applying method to all natural phenomena",
+            "• Building on previous discoveries",
+            "• Creating a systematic body of knowledge",
+            "",
+            "Science was now a reliable path to truth."
+          ]
+        },
+        {
+          "id": 10,
+          "title": "11. Resurrection - Scientific revolution begins",
+          "details": [
+            "The scientific revolution transformed everything:",
+            "• New institutions: scientific societies",
+            "• New tools: telescopes, microscopes",
+            "• New mindset: evidence over authority",
+            "",
+            "The resurrection:",
+            "• Old beliefs died",
+            "• New understanding emerged",
+            "• Humanity's relationship with nature changed forever",
+            "",
+            "Science became the new way of knowing."
+          ]
+        },
+        {
+          "id": 11,
+          "title": "12. Return with Elixir - Foundation for classical physics",
+          "details": [
+            "The elixir brought back:",
+            "• Mathematical description of nature",
+            "• Experimental method",
+            "• Systematic approach to knowledge",
+            "",
+            "Foundation laid for:",
+            "• Newton's laws of motion",
+            "• Classical mechanics",
+            "• Modern physics",
+            "",
+            "The pre-classical phase gave us the tools",
+            "to understand the universe mathematically."
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "name": "Classical Phase",
+      "era": "Newton to Maxwell (1600 - 1900 CE)",
+      "color": "#4169E1",
+      "stages": [
+        {
+          "id": 12,
+          "title": "1. Ordinary World - Mechanical universe of Newton",
+          "details": [
+            "Isaac Newton (1643-1727) established classical physics:",
+            "• Three laws of motion",
+            "• Universal gravitation",
+            "• Mathematical physics",
+            "",
+            "The world was now:",
+            "• Predictable and deterministic",
+            "• Governed by mathematical laws",
+            "• Fully comprehensible through physics",
+            "",
+            "Everything seemed explainable by classical mechanics."
+          ]
+        },
+        {
+          "id": 13,
+          "title": "2. Call to Adventure - Maxwell's electromagnetic theory",
+          "details": [
+            "James Clerk Maxwell (1831-1879) unified electricity and magnetism:",
+            "• Maxwell's equations",
+            "• Light as electromagnetic wave",
+            "• Unified field theory",
+            "",
+            "The call:",
+            "• Classical physics was incomplete",
+            "• New phenomena needed new theories",
+            "• Wave-particle duality emerged",
+            "",
+            "The adventure into quantum mechanics began."
+          ]
+        },
+        {
+          "id": 14,
+          "title": "3. Refusal of the Call - Wave-particle duality paradox",
+          "details": [
+            "The paradox challenged classical thinking:",
+            "• Light behaves as both wave and particle",
+            "• Matter also shows wave properties",
+            "• Classical physics couldn't explain this",
+            "",
+            "The refusal:",
+            "• 'God does not play dice' - Einstein",
+            "• Attempts to save classical determinism",
+            "• Resistance to probabilistic nature",
+            "",
+            "But the evidence was undeniable."
+          ]
+        },
+        {
+          "id": 15,
+          "title": "4. Meeting the Mentor - Planck's quantum hypothesis",
+          "details": [
+            "Max Planck (1858-1947) introduced quanta:",
+            "• Energy comes in discrete packets",
+            "• E = hν (energy = Planck constant × frequency)",
+            "• Solved blackbody radiation problem",
+            "",
+            "The mentor's guidance:",
+            "• Nature is quantized, not continuous",
+            "• Classical physics has limits",
+            "• New physics needed for atomic scale",
+            "",
+            "Planck showed the way forward."
+          ]
+        },
+        {
+          "id": 16,
+          "title": "5. Crossing the Threshold - Einstein's photoelectric effect",
+          "details": [
+            "Einstein (1879-1955) explained photoelectric effect:",
+            "• Light behaves as particles (photons)",
+            "• Energy quantized: E = hf",
+            "• Wave-particle duality confirmed",
+            "",
+            "The threshold crossed:",
+            "• Quantum mechanics was real",
+            "• Classical physics insufficient",
+            "• New paradigm required",
+            "",
+            "Einstein won Nobel Prize for this, not relativity."
+          ]
+        },
+        {
+          "id": 17,
+          "title": "6. Tests, Allies, Enemies - Bohr vs. classical mechanics",
+          "details": [
+            "Niels Bohr (1885-1962) developed atomic model:",
+            "• Quantized electron orbits",
+            "• Energy levels discrete",
+            "• Classical mechanics fails at atomic scale",
+            "",
+            "The battle:",
+            "• Bohr model vs. classical physics",
+            "• Quantum jumps vs. continuous motion",
+            "• Probability vs. determinism",
+            "",
+            "Bohr's allies: experimental evidence.",
+            "His enemies: classical determinism."
+          ]
+        },
+        {
+          "id": 18,
+          "title": "7. Approach to Inmost Cave - De Broglie's matter waves",
+          "details": [
+            "Louis de Broglie (1892-1987) proposed matter waves:",
+            "• λ = h/p (wavelength = Planck constant / momentum)",
+            "• All matter has wave properties",
+            "• Unified wave-particle duality",
+            "",
+            "The approach:",
+            "• Everything is both wave and particle",
+            "• Quantum mechanics applies to all matter",
+            "• Classical physics is approximation",
+            "",
+            "We were approaching the deepest quantum truths."
+          ]
+        },
+        {
+          "id": 19,
+          "title": "8. Ordeal - Uncertainty principle emerges",
+          "details": [
+            "Werner Heisenberg (1901-1976) discovered uncertainty:",
+            "• Δx·Δp ≥ ħ/2",
+            "• Cannot know position and momentum simultaneously",
+            "• Fundamental limit, not measurement error",
+            "",
+            "The ordeal:",
+            "• Determinism was dead",
+            "• Reality is probabilistic",
+            "• Observer affects observed",
+            "",
+            "This challenged everything we thought we knew about reality."
+          ]
+        },
+        {
+          "id": 20,
+          "title": "9. Reward - Quantum mechanics framework",
+          "details": [
+            "The complete framework emerged:",
+            "• Schrödinger equation",
+            "• Heisenberg uncertainty",
+            "• Quantum superposition",
+            "",
+            "The reward:",
+            "• Accurate predictions at atomic scale",
+            "• Unified theory of matter and energy",
+            "• New understanding of reality",
+            "",
+            "Quantum mechanics worked perfectly."
+          ]
+        },
+        {
+          "id": 21,
+          "title": "10. The Road Back - Schrödinger equation developed",
+          "details": [
+            "Erwin Schrödinger (1887-1961) created wave equation:",
+            "• iħ∂ψ/∂t = Ĥψ",
+            "• Describes quantum state evolution",
+            "• Foundation of quantum mechanics",
+            "",
+            "The road back:",
+            "• Mathematical framework complete",
+            "• Applications to atoms, molecules",
+            "• Quantum chemistry possible",
+            "",
+            "We had the tools to understand quantum systems."
+          ]
+        },
+        {
+          "id": 22,
+          "title": "11. Resurrection - Quantum theory validated",
+          "details": [
+            "Quantum mechanics was validated:",
+            "• Explained atomic spectra perfectly",
+            "• Predicted new phenomena",
+            "• Technology applications emerged",
+            "",
+            "The resurrection:",
+            "• Old classical worldview transformed",
+            "• New quantum reality accepted",
+            "• Science advanced dramatically",
+            "",
+            "Quantum mechanics became the foundation of modern physics."
+          ]
+        },
+        {
+          "id": 23,
+          "title": "12. Return with Elixir - Classical physics unified",
+          "details": [
+            "The elixir: unified understanding:",
+            "• Classical physics as large-scale limit",
+            "• Quantum mechanics for atomic scale",
+            "• Both valid in their domains",
+            "",
+            "Foundation for:",
+            "• Quantum computing",
+            "• Modern technology",
+            "• Future discoveries",
+            "",
+            "Classical and quantum physics unified in understanding."
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Quantum Phase",
+      "era": "Hilbert Space to Quantum Computing (1900 - Present)",
+      "color": "#9370DB",
+      "stages": [
+        {
+          "id": 24,
+          "title": "1. Ordinary World - Hilbert Space mathematical framework",
+          "details": [
+            "David Hilbert (1862-1943) developed mathematical framework:",
+            "• Infinite-dimensional vector spaces",
+            "• Basis for quantum state representation",
+            "• Mathematical foundation for quantum mechanics",
+            "",
+            "The ordinary world:",
+            "• Quantum states as vectors in Hilbert space",
+            "• Operators represent observables",
+            "• Mathematical formalism established",
+            "",
+            "This provided the language for quantum mechanics."
+          ]
+        },
+        {
+          "id": 25,
+          "title": "2. Call to Adventure - Einstein & Schrödinger's quantum mechanics",
+          "details": [
+            "Einstein and Schrödinger developed quantum theory:",
+            "• Einstein: photoelectric effect, EPR paradox",
+            "• Schrödinger: wave equation, cat thought experiment",
+            "• Foundation of quantum information theory",
+            "",
+            "The call:",
+            "• Quantum mechanics works",
+            "• But what does it mean?",
+            "• Can we control and use it?",
+            "",
+            "The adventure into quantum computing began."
+          ]
+        },
+        {
+          "id": 26,
+          "title": "3. Refusal of the Call - EPR paradox & quantum weirdness",
+          "details": [
+            "Einstein-Podolsky-Rosen (1935) highlighted weirdness:",
+            "• 'Spooky action at a distance'",
+            "• Entanglement seems to violate locality",
+            "• Quantum mechanics incomplete?",
+            "",
+            "The refusal:",
+            "• Quantum mechanics too weird",
+            "• Hidden variables must exist",
+            "• Reality must be local",
+            "",
+            "But experiments would prove quantum mechanics correct."
+          ]
+        },
+        {
+          "id": 27,
+          "title": "4. Meeting the Mentor - Bell's theorem on entanglement",
+          "details": [
+            "John Bell (1928-1990) proved no hidden variables:",
+            "• Bell's inequality",
+            "• Entanglement is real",
+            "• Quantum mechanics is complete",
+            "",
+            "The mentor's guidance:",
+            "• Entanglement is fundamental",
+            "• Can be used for computation",
+            "• Quantum information is new resource",
+            "",
+            "Bell showed the path to quantum computing."
+          ]
+        },
+        {
+          "id": 28,
+          "title": "5. Crossing the Threshold - Bose-Einstein Condensates created",
+          "details": [
+            "BEC achieved in 1995 (Cornell, Wieman, Ketterle):",
+            "• Atoms cooled to near absolute zero",
+            "• All atoms in same quantum state",
+            "• Macroscopic quantum effects",
+            "",
+            "The threshold:",
+            "• Quantum control at macroscopic scale",
+            "• Manipulation of quantum states",
+            "• Foundation for quantum technologies",
+            "",
+            "We crossed into the quantum control era."
+          ]
+        },
+        {
+          "id": 29,
+          "title": "6. Tests, Allies, Enemies - Atomic molasses cooling techniques",
+          "details": [
+            "Laser cooling techniques developed:",
+            "• Optical molasses: atoms slowed by lasers",
+            "• Doppler cooling",
+            "• Magneto-optical traps",
+            "",
+            "The tests:",
+            "• Cooling atoms to microkelvin temperatures",
+            "• Trapping and controlling individual atoms",
+            "• Preparing quantum states",
+            "",
+            "These techniques enabled quantum computing experiments."
+          ]
+        },
+        {
+          "id": 30,
+          "title": "7. Approach to Inmost Cave - Atomic tweezers for manipulation",
+          "details": [
+            "Optical tweezers enable precise control:",
+            "• Laser beams trap individual atoms",
+            "• Move and position atoms precisely",
+            "• Create quantum circuits atom by atom",
+            "",
+            "The approach:",
+            "• Individual quantum bit control",
+            "• Quantum gate operations",
+            "• Building quantum computers",
+            "",
+            "We approached the heart of quantum computing."
+          ]
+        },
+        {
+          "id": 31,
+          "title": "8. Ordeal - Quantum decoherence challenges",
+          "details": [
+            "Quantum decoherence is the great challenge:",
+            "• Quantum states fragile",
+            "• Environment destroys superposition",
+            "• Error rates high",
+            "",
+            "The ordeal:",
+            "• Maintaining quantum coherence",
+            "• Error correction needed",
+            "• Scaling quantum computers",
+            "",
+            "This is the central challenge of quantum computing."
+          ]
+        },
+        {
+          "id": 32,
+          "title": "9. Reward - Quantum entanglement demonstrated",
+          "details": [
+            "Entanglement successfully demonstrated:",
+            "• Bell test violations confirmed",
+            "• Quantum teleportation achieved",
+            "• Entangled states created and used",
+            "",
+            "The reward:",
+            "• Quantum advantage possible",
+            "• Quantum algorithms work",
+            "• New computational paradigm",
+            "",
+            "Quantum entanglement is the resource for quantum computing."
+          ]
+        },
+        {
+          "id": 33,
+          "title": "10. The Road Back - Quantum error correction",
+          "details": [
+            "Quantum error correction developed:",
+            "• Protect quantum information",
+            "• Correct errors without measurement",
+            "• Enable fault-tolerant computation",
+            "",
+            "The road back:",
+            "• Overcoming decoherence",
+            "• Building reliable quantum computers",
+            "• Scaling to useful sizes",
+            "",
+            "Error correction makes quantum computing practical."
+          ]
+        },
+        {
+          "id": 34,
+          "title": "11. Resurrection - Quantum supremacy achieved",
+          "details": [
+            "Google achieved quantum supremacy (2019):",
+            "• 53-qubit quantum processor",
+            "• Solved problem impossible for classical computers",
+            "• Quantum advantage demonstrated",
+            "",
+            "The resurrection:",
+            "• Quantum computing is real",
+            "• Practical applications possible",
+            "• New era of computation begun",
+            "",
+            "Quantum computing has risen from theory to reality."
+          ]
+        },
+        {
+          "id": 35,
+          "title": "12. Return with Elixir - Quantum computing revolution",
+          "details": [
+            "The elixir: quantum computing revolution:",
+            "• Quantum algorithms for optimization",
+            "• Quantum cryptography",
+            "• Quantum simulation of nature",
+            "",
+            "The future:",
+            "• Drug discovery",
+            "• Material science",
+            "• Artificial intelligence",
+            "",
+            "Quantum computing transforms how we solve problems.",
+            "From ancient mathematics to quantum supremacy - the journey is complete."
+          ]
+        }
+      ]
+    }
+  ]
+}
+
